@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from random import randint
+
 from sklearn.datasets import load_iris
 from sklearn.datasets import make_blobs
 
@@ -33,12 +35,18 @@ columns = 2
 newX = np.array([
     [x+columns*y for x in range(columns)] for y in range(rows)
 ])
+print(newX)
 
 print("\nnewX type: ", type(newX))
 
-print(newX)
-# print("\nnewX[:, 0] -->\n{}".format(newX[:, 0]))
-# print("\nnewX[:, 1] -->\n{}".format(newX[:, 1]))
+newY = [randint(0, 2) for y in range(rows * columns)]
+print("newY is {}".format(newY))
+
+# plt.scatter(newX[:, 0], newX[:, 1], marker="H", c=newY)
+# plt.show()
+
+print("\nnewX[:, 0] -->\n{}".format(newX[:, 0]))
+print("\nnewX[:, 1] -->\n{}".format(newX[:, 1]))
 
 
 # print(y)
