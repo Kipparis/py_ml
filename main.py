@@ -4,10 +4,11 @@ from random import randint
 
 from sklearn.datasets import load_iris
 from sklearn.datasets import make_blobs
+from sklearn.datasets import make_circles
 
 from sklearn.model_selection import train_test_split
 
-import mglearn
+# # import mglearn
 
 import pandas as pd
 
@@ -18,27 +19,34 @@ from sklearn import linear_model, model_selection
 
 import numpy as np
 
-X, y = make_blobs(random_state=1, n_samples=100, n_features=2, centers=4)
+from random import randint
 
-print("\nX[:, 0] -->\n{}".format(X[:, 0]))
-print("\nX[:, 1] -->\n{}".format(X[:, 1]))
-print(X)
+# X, y = make_blobs(random_state=1, n_samples=100, n_features=2, centers=4)
 
-print("X type: ", type(X))
-print("y type: ", type(y))
+# print("\nX[:, 0] -->\n{}".format(X[:, 0]))
+# print("\nX[:, 1] -->\n{}".format(X[:, 1]))
+
+
+# print("X type: ", type(X))
+# print("y type: ", type(y))
 
 newX = np.ndarray(shape=(2,2), dtype=float, order='F')
 
 # Создаём массив ndarray
 rows = 10
-columns = 2
+columns = 5
 newX = np.array([
     [x+columns*y for x in range(columns)] for y in range(rows)
 ])
 print(newX)
 
+newY = np.array([
+    randint(0,2) for i in range(rows)
+])
+
 print("\nnewX type: ", type(newX))
 
+<<<<<<< HEAD
 newY = [randint(0, 2) for y in range(rows * columns)]
 print("newY is {}".format(newY))
 
@@ -47,6 +55,28 @@ print("newY is {}".format(newY))
 
 print("\nnewX[:, 0] -->\n{}".format(newX[:, 0]))
 print("\nnewX[:, 1] -->\n{}".format(newX[:, 1]))
+=======
+print(newX)
+
+print("\nShape of newX:\n{}".format(newX.shape))
+print("Shape of newY:\n{}".format(newY.shape))
+
+x = np.linspace(-10, 10, 100)
+y = np.sin(x)
+plt.plot(x, y, marker="x")
+plt.show()
+
+# plt.scatter(newX[:, 0], newX[:, 4], marker="H", c=newY)
+# plt.show()
+
+
+####
+
+
+
+# print("\nnewX[:, 0] -->\n{}".format(newX[:, 0]))
+# print("\nnewX[:, 1] -->\n{}".format(newX[:, 1]))
+>>>>>>> 714d2f46ef422fdf65d99754743cc8d62a89d9d0
 
 
 # print(y)
