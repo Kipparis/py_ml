@@ -37,7 +37,9 @@ for n_neighbours, ax in zip(neighbours_arr, axes.reshape(-1)):
     ax.set_title("{} сосед(ей)".format(n_neighbours))
     ax.set_xlabel("признак 0")
     ax.set_ylabel("признак 1")
-    ax.legend(['{:.2f}'.format(accuracy)])
+    legend = []
+    legend.append('{:.2f}'.format(accuracy))
+    ax.legend(legend, loc=3)
 
 
 fig.subplots_adjust(wspace=0.5, hspace = 0.5)
