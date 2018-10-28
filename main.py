@@ -46,16 +46,6 @@ newY = np.array([
 
 print("\nnewX type: ", type(newX))
 
-<<<<<<< HEAD
-newY = [randint(0, 2) for y in range(rows * columns)]
-print("newY is {}".format(newY))
-
-# plt.scatter(newX[:, 0], newX[:, 1], marker="H", c=newY)
-# plt.show()
-
-print("\nnewX[:, 0] -->\n{}".format(newX[:, 0]))
-print("\nnewX[:, 1] -->\n{}".format(newX[:, 1]))
-=======
 print(newX)
 
 print("\nShape of newX:\n{}".format(newX.shape))
@@ -76,7 +66,6 @@ plt.show()
 
 # print("\nnewX[:, 0] -->\n{}".format(newX[:, 0]))
 # print("\nnewX[:, 1] -->\n{}".format(newX[:, 1]))
->>>>>>> 714d2f46ef422fdf65d99754743cc8d62a89d9d0
 
 
 # print(y)
