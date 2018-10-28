@@ -24,9 +24,9 @@ train_labels = np.r_[train_labels, np.ones(100)]
 
 # Функция для визуализации
 
-def get_grid(data, eps=0.01):
-    x_min, x_max = data[:, 0].min() - 1, data[:, 0].max() + 1
-    y_min, y_max = data[:, 1].min() - 1, data[:, 1].max() + 1
+def get_grid(data, eps=0.01, delta=0.5):
+    x_min, x_max = data[:, 0].min() - delta, data[:, 0].max() + delta
+    y_min, y_max = data[:, 1].min() - delta, data[:, 1].max() + delta
     return np.meshgrid(np.arange(x_min, x_max, eps), np.arange(y_min, y_max, eps))
 
 def show_tree(tree, features=1):
@@ -42,7 +42,7 @@ def show_tree(tree, features=1):
     #     dot_graph = f.read() 
     # graphviz.Source(dot_graph)
 
-
+        
 clf_tree = DecisionTreeClassifier(criterion='entropy', max_depth=3, random_state=17)
 
 clf_tree.fit(train_data, train_labels)
@@ -63,34 +63,44 @@ clf_tree.fit(train_data, train_labels)
 
 
 # plt.show()
-data2 = pd.DataFrame({'Возраст':  [17,64,18,20,38,49,55,25,29,31,33], 
-                      'Зарплата': [25,80,22,36,37,59,74,70,33,102,88], 
-             'Невозврат кредита': [1,0,1,0,1,0,0,1,1,0,1]})
+# data2 = pd.DataFrame({'Возраст':  [17,64,18,20,38,49,55,25,29,31,33], 
+#                       'Зарплата': [25,80,22,36,37,59,74,70,33,102,88], 
+#              'Невозврат кредита': [1,0,1,0,1,0,0,1,1,0,1]})
 
 
-data_sorted = data2.sort_values('Возраст')
+# data_sorted = data2.sort_values('Возраст')
 
-print(data_sorted)
+# print(data_sorted)
 
-tree = DecisionTreeClassifier(random_state=17)
-# tree.fit(data['Возраст'].values.reshape(-1, 1), data["Невозврат кредита"].values)
-tree.fit(data2[['Возраст', 'Зарплата']].values, data2['Невозврат кредита'].values)
+# tree = DecisionTreeClassifier(random_state=17)
+# # tree.fit(data['Возраст'].values.reshape(-1, 1), data["Невозврат кредита"].values)
+# tree.fit(data2[['Возраст', 'Зарплата']].values, data2['Невозврат кредита'].values)
 
-# show_tree(tree, features=2)
+# # show_tree(tree, features=2)
 
-# Немного кода для отображения разделяющей поверхности
+# # Немного кода для отображения разделяющей поверхности
 
-xx, yy = get_grid(data2[['Возраст', 'Зарплата']].values)
+# xx, yy = get_grid(data2[['Возраст', 'Зарплата']].values, eps=0.1, delta=5)
 
-print(data2[['Возраст','Зарплата']].values[:, 0], 
-        data2[['Возраст','Зарплата']].values[:, 1],)
+# print(data2[['Возраст','Зарплата']].values[:, 0], 
+#         data2[['Возраст','Зарплата']].values[:, 1],)
 
-predicted = tree.predict(np.c_[xx.ravel(), yy.ravel()]).reshape(xx.shape)
-plt.pcolormesh(xx, yy, predicted, cmap='cool')
-plt.scatter(data2['Возраст'].values, data2['Зарплата'].values, 
-            c=data2['Невозврат кредита'], cmap='cool', 
-            edgecolors='black', linewidths=1.5)
+# predicted = tree.predict(np.c_[xx.ravel(), yy.ravel()]).reshape(xx.shape)
+# plt.pcolormesh(xx, yy, predicted, cmap='cool')
+# plt.scatter(data2['Возраст'].values, data2['Зарплата'].values, 
+#             c=data2['Невозврат кредита'], cmap='cool', 
+#             edgecolors='black', linewidths=1.5)
 
-plt.show()
+# plt.show()
 
-# print()
+n_train = 150
+n_test = 1000
+noise = 0.1
+
+def f(x):
+    x = x.ravel()
+
+    return np.exp(-x ** 2) + 1.5 * np.exp(-x(x - 2) ** 2)
+
+def generate(n_samples, noise):
+    
